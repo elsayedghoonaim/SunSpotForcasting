@@ -1,83 +1,99 @@
-This project focuses on predicting the monthly mean total sunspot number using various machine learning models. The dataset spans from January 1749 to January 2021, containing the monthly mean total sunspot numbers. The project involves data exploration, preprocessing, model training, and evaluation using Decision Tree, XGBoost, and ARIMA models.
+# ☀️ Sunspot Activity Forecasting
 
-### Table of Contents
-1. [Installation](#installation)
-2. [Usage](#usage)
-3. [Project Structure](#project-structure)
-4. [Data Exploration & Wrangling](#data-exploration--wrangling)
-5. [Data Preprocessing](#data-preprocessing)
-6. [Data Splitting](#data-splitting)
-7. [Baseline Readings](#baseline-readings)
-8. [Models](#models)
-    - [Decision Tree Model](#decision-tree-model)
-    - [XGBoost Model](#xgboost-model)
-    - [ARIMA Model](#arima-model)
-9. [Results](#results)
-10. [Contributing](#contributing)
-11. [License](#license)
+A time-series forecasting project that predicts monthly mean sunspot numbers using classical ML and statistical models. The dataset covers **272 years of solar activity** (January 1749 – January 2021), making it one of the longest continuous scientific records available.
 
-### Installation
-1. Clone the repository:
-   ```sh
-   git clone https://github.com/your-username/sunspot-prediction.git
-   ```
-2. Navigate to the project directory:
-   ```sh
-   cd sunspot-prediction
-   ```
-3. Install the required dependencies:
-   ```sh
-   pip install -r requirements.txt
-   ```
+---
 
-### Usage
-1. Place the dataset `Sunspots.csv` in the project directory.
-2. Run the Jupyter notebook `sunspot_prediction.ipynb` to execute the data exploration, preprocessing, and model training steps.
+## 📌 Problem Statement
 
-### Project Structure
-- `sunspot_prediction.ipynb`: Jupyter notebook containing the project code.
-- `Sunspots.csv`: Dataset file containing the monthly mean total sunspot numbers.
-- `README.md`: Project documentation.
-- `requirements.txt`: List of required Python packages.
+Sunspot activity follows an approximately **11-year solar cycle** and directly influences space weather, satellite operations, radio communications, and power grid stability. Accurate forecasting of sunspot numbers helps anticipate periods of high solar activity.
 
-### Data Exploration & Wrangling
-- Load and explore the dataset to understand its structure and characteristics.
-- Handle missing values and convert the `Date` column to a datetime format.
-- Visualize the data to identify patterns and trends.
+---
 
-### Data Preprocessing
-- Create lagged features to include past sunspot numbers as predictors.
-- Prepare the dataset for model training by creating features and target variables.
+## 📊 Dataset
 
-### Data Splitting
-- Split the dataset into training and testing sets using an 80-20 split.
+| Property       | Detail                                      |
+|----------------|---------------------------------------------|
+| Source         | `Sunspots.csv` (included in repo)           |
+| Coverage       | January 1749 – January 2021                 |
+| Frequency      | Monthly                                     |
+| Target Variable| Monthly Mean Total Sunspot Number           |
+| Total Records  | ~3,265 monthly observations                 |
 
-### Baseline Readings
-- Calculate the baseline mean absolute error (MAE) using the mean of the training set as the prediction.
+---
 
-### Models
-#### Decision Tree Model
-- Train a Decision Tree Regressor on the training data.
-- Evaluate the model using mean absolute error (MAE) on the test data.
+## 🧠 Models Used
 
-#### XGBoost Model
-- Train an XGBoost Regressor on the training data.
-- Evaluate the model using mean absolute error (MAE) on the test data.
+| Model          | Type                  | Approach                          |
+|----------------|-----------------------|-----------------------------------|
+| Decision Tree  | ML Regressor          | Lagged features as predictors     |
+| XGBoost        | Gradient Boosting     | Lagged features as predictors     |
+| ARIMA          | Statistical           | Hyperparameter-tuned (p, d, q)    |
 
-#### ARIMA Model
-- Perform hyperparameter tuning for the ARIMA model.
-- Evaluate the model using mean absolute error (MAE) on the test data.
+**Feature Engineering:** Lagged sunspot values (t-1, t-2, ..., t-n) are used as input features for the ML models to capture temporal dependencies.
 
-### Results
-- Compare the performance of the different models using mean absolute error (MAE).
-- Visualize the predictions of each model against the actual values.
+**Train/Test Split:** 80% training / 20% testing (chronological split — no shuffling).
 
-### Contributing
-1. Fork the repository.
-2. Create a new branch (`git checkout -b feature-branch`).
-3. Commit your changes (`git commit -m 'Add some feature'`).
-4. Push to the branch (`git push origin feature-branch`).
-5. Open a pull request.
+---
 
-### License
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+## 📈 Results
+
+All models are evaluated using **Mean Absolute Error (MAE)** against a naive baseline (predicting the training mean).
+
+| Model         | MAE       |
+|---------------|-----------|
+| Baseline      | —         |
+| Decision Tree | —         |
+| XGBoost       | —         |
+| ARIMA         | —         |
+
+> 📓 Full results, plots, and model comparisons are in [`sun_spot.ipynb`](./sun_spot.ipynb).
+
+---
+
+## 🗂️ Project Structure
+
+```
+.
+├── sun_spot.ipynb   # Full analysis: EDA, preprocessing, modeling, evaluation
+├── Sunspots.csv     # Monthly sunspot dataset (1749–2021)
+└── README.md
+```
+
+---
+
+## ⚙️ Setup
+
+### 1. Clone the repository
+
+```bash
+git clone https://github.com/elsayedghoonaim/sun-spot-forcasting.git
+cd sun-spot-forcasting
+```
+
+### 2. Install dependencies
+
+```bash
+pip install numpy pandas matplotlib scikit-learn xgboost statsmodels jupyter
+```
+
+### 3. Run the notebook
+
+```bash
+jupyter notebook sun_spot.ipynb
+```
+
+---
+
+## 🔭 Applications
+
+- Space weather forecasting
+- Satellite operations planning
+- Radio communication disruption prediction
+- Power grid risk assessment
+
+---
+
+## 📄 License
+
+MIT License — free to use and build upon.
