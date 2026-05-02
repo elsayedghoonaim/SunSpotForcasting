@@ -49,42 +49,6 @@ All models are evaluated using **Mean Absolute Error (MAE)** against a naive bas
 
 > 📓 Full results, plots, and model comparisons are in [`sun_spot.ipynb`](./sun_spot.ipynb).
 
----
-
-## 🗂️ Project Structure
-
-```
-.
-├── sun_spot.ipynb   # Full analysis: EDA, preprocessing, modeling, evaluation
-├── Sunspots.csv     # Monthly sunspot dataset (1749–2021)
-└── README.md
-```
-
----
-
-## ⚙️ Setup
-
-### 1. Clone the repository
-
-```bash
-git clone https://github.com/elsayedghoonaim/sun-spot-forcasting.git
-cd sun-spot-forcasting
-```
-
-### 2. Install dependencies
-
-```bash
-pip install numpy pandas matplotlib scikit-learn xgboost statsmodels jupyter
-```
-
-### 3. Run the notebook
-
-```bash
-jupyter notebook sun_spot.ipynb
-```
-
----
-
 ## 🔭 Applications
 
 - Space weather forecasting
